@@ -2,18 +2,22 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 export const ContactForm = () => {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     company: "",
     email: "",
+    message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Validation
@@ -26,21 +30,44 @@ export const ContactForm = () => {
       return;
     }
 
-    // Here you would typically send the data to your backend
-    console.log("Form submitted:", formData);
-    
-    toast({
-      title: "Solicitação enviada!",
-      description: "Entraremos em contato em até 24 horas.",
-    });
+    setIsSubmitting(true);
 
-    // Reset form
-    setFormData({
-      name: "",
-      phone: "",
-      company: "",
-      email: "",
-    });
+    try {
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          message: formData.message
+        }
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Solicitação enviada!",
+        description: "Entraremos em contato em até 24 horas.",
+      });
+
+      // Reset form
+      setFormData({
+        name: "",
+        phone: "",
+        company: "",
+        email: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Erro ao enviar:", error);
+      toast({
+        title: "Erro ao enviar",
+        description: "Por favor, tente novamente ou entre em contato pelo WhatsApp.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -94,8 +121,23 @@ export const ContactForm = () => {
         </div>
       </div>
 
-      <Button type="submit" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-semibold">
-        Solicitar Vistoria Gratuita
+      <div className="space-y-2">
+        <Label htmlFor="message">Mensagem Adicional (Opcional)</Label>
+        <Textarea
+          id="message"
+          placeholder="Conte-nos mais sobre suas necessidades..."
+          value={formData.message}
+          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+          rows={4}
+        />
+      </div>
+
+      <Button 
+        type="submit" 
+        className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-semibold"
+        disabled={isSubmitting}
+      >
+        {isSubmitting ? "Enviando..." : "Solicitar Vistoria Gratuita"}
       </Button>
 
       <p className="text-xs text-muted-foreground text-center">
