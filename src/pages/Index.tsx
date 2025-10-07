@@ -72,11 +72,11 @@ const Index = () => {
     },
     {
       question: "Depois da vistoria, recebo um relatório?",
-      answer: "Sim! Você receberá um relatório técnico completo em até 5 dias úteis, com fotos, identificação de não conformidades, classificação de riscos e recomendações de melhorias.",
+      answer: "Sim! A vistoria gratuita fornece um relatório simplificado. Após a contratação do serviço completo, você receberá um relatório técnico detalhado com fotos, identificação de não conformidades, classificação de riscos, medidas específicas para resolver os problemas e orçamento para os serviços necessários.",
     },
     {
       question: "A vistoria inicial é realmente gratuita?",
-      answer: "Sim, oferecemos uma avaliação preliminar gratuita para identificar os principais pontos de atenção. O diagnóstico completo tem custo que será informado após a avaliação inicial.",
+      answer: "Sim, a vistoria inicial é totalmente gratuita e você receberá um relatório simplificado. Se optar pela contratação do serviço completo, receberá diagnóstico detalhado com plano de ação e orçamento.",
     },
   ];
 
@@ -285,7 +285,7 @@ const Index = () => {
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-3 gap-8 mb-8">
               <div>
-                <h3 className="text-xl font-bold mb-4">Segurança Predial</h3>
+                <h3 className="text-xl font-bold mb-4">MDA Engenharia</h3>
                 <p className="text-primary-foreground/80">
                   Especialistas em diagnóstico e segurança de edificações desde 2010.
                 </p>
@@ -294,9 +294,8 @@ const Index = () => {
               <div>
                 <h3 className="text-xl font-bold mb-4">Contato</h3>
                 <div className="space-y-2 text-primary-foreground/80">
-                  <p>📱 WhatsApp: (11) 99999-9999</p>
-                  <p>📞 Tel: (11) 3333-3333</p>
-                  <p>✉️ contato@segurancapredial.com.br</p>
+                  <p>📱 WhatsApp: (61) 99386-2269</p>
+                  <p>✉️ davicm00@gmail.com</p>
                 </div>
               </div>
 
