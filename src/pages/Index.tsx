@@ -223,33 +223,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Testimonials Section - Placeholder */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Confiança de Quem Já Protegeu Seu Patrimônio
-            </h2>
-            <p className="text-muted-foreground mb-12">
-              Empresas e condomínios que evitaram problemas graves com nossas vistorias
-            </p>
-            
-            <div className="bg-card rounded-lg p-8 border border-border shadow-md">
-              <div className="flex items-center justify-center gap-2 mb-4">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <Award key={star} className="w-6 h-6 text-accent fill-accent" />
-                ))}
-              </div>
-              <p className="text-lg text-foreground italic mb-4">
-                "A vistoria identificou problemas na instalação elétrica que poderiam ter causado um incêndio. Investimento que salvou nosso condomínio."
-              </p>
-              <p className="text-muted-foreground font-semibold">
-                — Síndico, Condomínio Residencial
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* FAQ Section */}
       <section className="py-20 bg-secondary/30">
@@ -315,8 +288,7 @@ const Index = () => {
             </div>
 
             <div className="border-t border-primary-foreground/20 pt-8 text-center text-primary-foreground/60">
-              <p className="mb-2">CREA-SP 123456 | CNPJ: 00.000.000/0001-00</p>
-              <p>© 2024 Segurança Predial. Todos os direitos reservados.</p>
+              <p>© 2025 MDA Engenharia. Todos os direitos reservados.</p>
             </div>
           </div>
         </div>
